@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>陈军军</title>
+    <link>https://ramoncjj.github.io/</link>
+    <description>Recent content on 陈军军</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_hans</language>
+    <lastBuildDate>Fri, 19 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell和PATH</title>
+      <link>https://ramoncjj.github.io/note/shellandpath/</link>
+      <pubDate>Fri, 19 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ramoncjj.github.io/note/shellandpath/</guid>
+      <description>PATH是一个表格，存放了很多路径 ，在这些路径下存放了很多命令，shell便是通过那些命令（shell语言）跟计算机内核交互
+Shell是一个程序， 它能直接操作计算机内核，它能通过很多种语言来操作
+Bash zsh sh shell一般分两种:
+命令行shell（CLI） 图形用户界面（GUI） </description>
+    </item>
+    
+  </channel>
+</rss>
