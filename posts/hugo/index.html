@@ -38,9 +38,9 @@ PAUSE
 <span style=color:#75715e># 复制代码保存为bat文件，双击执行</span>
 </code></pre></div><ul><li>预览</li></ul><blockquote><p><a href=http://localhost:1313/>http://localhost:1313/</a></p></blockquote><hr><h2 id=部署-github>部署 github
 <a class=heading-link href=#%e9%83%a8%e7%bd%b2-github><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><ul><li><p>获取自己github账号的授权token</p></li><li><p>将demo 转化为git仓库</p></li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>cd demo
+<span class=sr-only>Link to heading</span></a></h2><ul><li>将demo 转化为git仓库</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>cd demo
 git init 
-</code></pre></div><ul><li>在demo目录下创建</li></ul><blockquote><p>.github/workflows/main.yml</p><p>这是github工作流文件，直白的说有了该文件github会自动给你做一些事情</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>GitHub Pages</span>
+</code></pre></div><ul><li>在demo目录下创建</li></ul><blockquote><p>.github/workflows/main.yml</p><p>这是github工作流文件，直白的说有了该文件github会自动给你做一些事情，</p><p>下面是文件内容</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>GitHub Pages</span>
 
 <span style=color:#f92672>on</span>:
   <span style=color:#f92672>push</span>:
@@ -69,31 +69,15 @@ git init
       - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy</span>
         <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-gh-pages@v3 </span>
         <span style=color:#f92672>with</span>:
-          <span style=color:#75715e>#你的个人token，没有该token将无法公开到别的仓库获取方式稍后解释</span>
+          <span style=color:#75715e>#你的个人token，没有该token将无法公开到别的仓库，获取方式稍后解释</span>
           <span style=color:#f92672>PERSONAL_TOKEN </span>: <span style=color:#ae81ff>${{ secrets.blogtoken }} </span>
           <span style=color:#f92672>publish_dir</span>: <span style=color:#ae81ff>./public</span> <span style=color:#75715e>#公开的文件夹</span>
-          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>ramoncjj/ramoncjj.github.io</span> <span style=color:#75715e>#公开到哪个仓库</span>
-          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main </span> <span style=color:#75715e>#公开的branch</span>
+          <span style=color:#75715e>#公开到哪个仓库，稍后需建立该仓库</span>
+          <span style=color:#f92672>external_repository</span>: <span style=color:#ae81ff>ramoncjj/ramoncjj.github.io </span>
+          <span style=color:#f92672>publish_branch</span>: <span style=color:#ae81ff>main </span> <span style=color:#75715e>#要公开的branch</span>
           <span style=color:#f92672>commit_message</span>: <span style=color:#ae81ff>${{ github.event.head_commit.message }}</span>
-</code></pre></div><ul><li>在github上创建仓库：[你的 github username].github.io（必须是这个仓库名字）</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>@ECHO OFF
-<span style=color:#75715e># 进入刚才的dem</span>
-cd demo
-<span style=color:#75715e># 在public中生成静态文件</span>
-hugo 
-cd public
-git init
-git add .
-git commit -m <span style=color:#e6db74>&#34;first commit&#34;</span>
-git remote add origin <span style=color:#f92672>[</span>刚刚新建的仓库地址<span style=color:#f92672>]</span>
-git branch -M main
-<span style=color:#75715e># 将public中的生成的静态文件上传到刚刚新建的仓库</span>
-git push -u origin main
-PAUSE
-<span style=color:#75715e># 复制代码保存为bat文件，双击执行</span>
-</code></pre></div><ul><li>在github上刚才的仓库中</li></ul><p>setting -> pages
-source: Deploy from a branch
-Branch: main
--> save</p><ul><li>部署完毕，访问 https://[你的 github username].github.io/</li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+</code></pre></div><ul><li>推送这个仓库到github上，设为私有，接下来为这个仓库设置 Actions secrets</li></ul><blockquote><ul><li><p>Profile Photo -> Settings -> Developer settings -> Personal access tokens -> Generate new token</p></li><li><p>记得要勾选下面两个scope:<br>workflow and write:packages.</p></li><li><p>创建了token之后复制存好（明文只显示一遍），这个token是账号级别的，接下来把它设置到这个仓库的的Actions secrets里</p></li><li><p>仓库 -> Settings -> Secrets -> Actions -> New repository secret</p><p>粘贴刚才生成并且保存的token明文 到value框中，并命名，记下这个名字。<br>再将这个名字写在main.yml文件中<br>PERSONAL_TOKEN : ${{ secrets.&lt;名字>}}</p></li><li><p>再将main.yml的改动同步到github，设置Action secrets 完毕</p></li></ul></blockquote><ul><li>创建新仓库</li></ul><blockquote><ul><li><p>[你的 github username].github.io（必须是这个仓库名字）</p></li><li><p>将这个仓库名填写到上面的main.yml 中</p></li></ul><blockquote><p>external_repository: ramoncjj/ramoncjj.github.io</p></blockquote><ul><li><p>setting -> pages<br>source: Deploy from a branch<br>Branch: main
+-> save</p></li><li><p>再将main.yml的改动同步到github</p></li></ul></blockquote><ul><li>部署完毕，访问 https://[你的 github username].github.io/</li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
 2022
 ·
 <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script src=/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv+VPmMpN2pGn19RfzdpwZGU0="></script></body></html>
