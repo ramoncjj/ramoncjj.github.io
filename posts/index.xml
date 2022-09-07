@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on j</title><link>https://ramoncjj.github.io/posts/</link><description>Recent content in Posts on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>hugo + github 搭建个人博客</title><link>https://ramoncjj.github.io/posts/hugo/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/hugo/</guid><description>该搭建流程概述如上图
 本地 hugo Link to heading 下载 https://github.com/gohugoio/hugo/releases
 配置 解压之后能看到hugo.exe文件，将其的绝对路径添加到path后，我们便可全局使用hugo命令
-使用 @ECHO OFF hugo new site demo #创建博客项目demo cd demo cd themes #进入themes文件夹 # 下载主题，这里选择hugo-coder，主题下载到themes文件夹里 git clone https://github.com/luizdepra/hugo-coder.git #将hugo-coder/exampleSite下的config.toml文件复制并且替换democonfog.toml cd hugo-coder cd exampleSite move config.toml ../ cd .. move config.toml ../ cd .. move config.toml ../ cd .. # 回到demo路径下，开启本地预览 hugo server PAUSE # 复制代码保存为bat文件，双击执行 预览 http://localhost:1313/</description></item><item><title>shellAndPath</title><link>https://ramoncjj.github.io/posts/shellandpath/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/shellandpath/</guid><description>PATH是一个表格，存放了很多路径 ，在这些路径下存放了可执行程序，shell便是通过那些命令（shell语言）跟计算机内核交互
-Shell是一个程序， 它能直接操作计算机内核，它能通过很多种语言来操作
-Bash zsh sh shell一般分两种:
-命令行shell（CLI） 图形用户界面（GUI）</description></item></channel></rss>
+使用 @ECHO OFF hugo new site demo #创建博客项目demo cd demo cd themes #进入themes文件夹 # 下载主题，这里选择hugo-coder，主题下载到themes文件夹里 git clone https://github.com/luizdepra/hugo-coder.git #将hugo-coder/exampleSite下的config.toml文件复制并且替换democonfog.toml cd hugo-coder cd exampleSite move config.toml ../ cd .. move config.toml ../ cd .. move config.toml ../ cd .. # 回到demo路径下，开启本地预览 hugo server PAUSE # 复制代码保存为bat文件，双击执行 预览 http://localhost:1313/</description></item><item><title>shell和Path</title><link>https://ramoncjj.github.io/posts/shellandpath/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/shellandpath/</guid><description>shell Link to heading shell本身是一个程序， 它为我们使用程序提供了一个界面，shell一般分两种:
+命令行shell（CLI）
+图形用户界面（GUI）
+shell 使用很多种语言来对内核进行操作
+bash，zsh，sh，&amp;hellip;
+每个指令也都是可执行程序，指令后半段都是参数，用来对应不同的对内核操作
+PATH Link to heading PATH是一个表格，存放了很多路径 ，在这些路径下存放了可执行程序
+当你在终端里输入指令时，系统会去这些路径下搜索同名的可执行程序</description></item></channel></rss>
