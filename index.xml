@@ -1,11 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>j</title><link>https://ramoncjj.github.io/</link><description>Recent content on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>hugo + github 搭建个人博客</title><link>https://ramoncjj.github.io/posts/hugo/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/hugo/</guid><description>该搭建流程概述如上图
-本地 hugo Link to heading 下载 https://github.com/gohugoio/hugo/releases
-配置 解压之后能看到hugo.exe文件，将其的绝对路径添加到path后，我们便可全局使用hugo命令
-使用 @ECHO OFF hugo new site demo #创建博客项目demo cd demo cd themes #进入themes文件夹 # 下载主题，这里选择hugo-coder，主题下载到themes文件夹里 git clone https://github.com/luizdepra/hugo-coder.git #将hugo-coder/exampleSite下的config.toml文件复制并且替换democonfog.toml cd hugo-coder cd exampleSite move config.toml ../ cd .. move config.toml ../ cd .. move config.toml ../ cd .. # 回到demo路径下，开启本地预览 hugo server PAUSE # 复制代码保存为bat文件，双击执行 本地预览 http://localhost:1313/</description></item><item><title>shell和Path</title><link>https://ramoncjj.github.io/posts/shellandpath/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/shellandpath/</guid><description>shell Link to heading shell本身是一个程序， 它为我们使用程序提供了一个界面，shell一般分两种:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>j</title><link>https://ramoncjj.github.io/</link><description>Recent content on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 12 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>前端中的一些简单概念</title><link>https://ramoncjj.github.io/posts/%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid><description>前端 Link to heading HTML
+网页的结构，组件的位置 - 骨骼
+CSS
+网页的美化，组件的style - 服饰
+JavaScript
+网页的交互，组件的交互逻辑 - 逻辑
+JavaScript Link to heading 你们人类不满足网页只是一些文字和图片的展示，希望页面上可以有更多功能。
+比如点击一个按钮，弹一个窗口 或者改变页面上某些内容。 为了实现这种功能，就创造了一门脚本语言，逐步升级演化成了 JavaScript 这门语言。
+JavaScript 框架 Link to heading jQuery
+解决浏览器之间的兼容性问题
+Vue
+通过尽可能简单的API实现响应的数据绑定和组合的视图组件
+AngularJS</description></item><item><title>线程和进程</title><link>https://ramoncjj.github.io/posts/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/</guid><description>电脑构成 Link to heading 运行核心 cup + 寄存器 + RAM
+外设 键盘 + 鼠标 + gps &amp;hellip;&amp;hellip;
+基础知识点 Link to heading CPU太快，太快，太快了，寄存器仅仅能够追的上他的脚步，RAM和别的挂在各总线上的设备完全是望其项背。那当多个任务要执行的时候怎么办呢？轮流着来?或者谁优先级高谁来？不管怎么样的策略，一句话就是在CPU看来就是轮流着来。
+执行一段程序代码，实现一个功能，当得到CPU的时候，相关的资源必须也已经就位，就是显卡啊，GPS啊什么的必须就位，然后CPU开始执行。这里除了CPU以外所有的就构成了这个程序的执行环境，也就是我们所定义的程序上下文。
+当这个程序执行完了，或者分配给他的CPU执行时间用完了，那它就要被切换出去，等待下一次CPU的临幸。在被切换出去的最后一步工作就是保存程序上下文，因为这个是下次他被CPU临幸的运行环境，必须保存。
+串联起来的事实：前面讲过在CPU看来所有的任务都是一个一个的轮流执行的，具体的轮流方法就是：先加载程序A的上下文，然后开始执行A，保存程序A的上下文，调入下一个要执行的程序B的程序上下文，然后开始执行B,保存程序B的上下文
+进程 Link to heading CPU加载上下文时间 + CPU执行时间 + CPU保存上下文时间
+线程 Link to heading 进程的颗粒度太大，每次都要有上下的调入，保存，调出。如果我们把进程比喻为一个运行在电脑上的软件，那么一个软件的执行不可能是一条逻辑执行的，必定有多个分支和多个程序段，就好比要实现程序A，实际分成 a，b，c等多个块组合而成。那么这里具体的执行就可能变成:</description></item><item><title>shell和Path</title><link>https://ramoncjj.github.io/posts/shellandpath/</link><pubDate>Mon, 05 Sep 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/shellandpath/</guid><description>shell Link to heading shell本身是一个程序， 它为我们使用程序提供了一个界面，shell一般分两种:
 命令行shell（CLI）
 图形用户界面（GUI）
 shell 使用很多种语言来对内核进行操作
 bash，zsh，sh，&amp;hellip;
 每个指令也都是可执行程序，指令后半段都是参数，用来对应不同的对内核操作
-PATH Link to heading PATH是一个列表，存放了很多路径 ，在这些路径下存放了可执行程序
-当你在终端里输入指令时，系统会去这些路径下搜索同名的可执行程序</description></item></channel></rss>
+PATH Link to heading PATH是一个表格，存放了很多路径 ，在这些路径下存放了可执行程序
+当你在终端里输入指令时，系统会去这些路径下搜索同名的可执行程序</description></item><item><title>hugo + github 搭建个人博客</title><link>https://ramoncjj.github.io/posts/hugo/</link><pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/hugo/</guid><description>该搭建流程概述如上图
+本地 hugo Link to heading 下载 https://github.com/gohugoio/hugo/releases
+配置 解压之后能看到hugo.exe文件，将其的绝对路径添加到path后，我们便可全局使用hugo命令
+使用 @ECHO OFF hugo new site demo #创建博客项目demo cd demo cd themes #进入themes文件夹 # 下载主题，这里选择hugo-coder，主题下载到themes文件夹里 git clone https://github.com/luizdepra/hugo-coder.git #将hugo-coder/exampleSite下的config.toml文件复制并且替换democonfog.toml cd hugo-coder cd exampleSite move config.toml ../ cd .. move config.toml ../ cd .. move config.toml ../ cd .. # 回到demo路径下，开启本地预览 hugo server PAUSE # 复制代码保存为bat文件，双击执行 本地预览 http://localhost:1313/</description></item></channel></rss>
