@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>j</title><link>https://ramoncjj.github.io/</link><description>Recent content on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 10 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/maven/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/maven/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
-JDK下载
-配置环境变量
-系统变量中添加
-Variable Name : JAVA_HOME Variable Value : C:\Program Files\Java\jdk1.8.0_31
-Variable Name : PATH Variable Value : %JAVA_HOME%\bin
-查看配置是否成功
-java -version MySql Link to heading 一个关系型数据库，主要用于存放持久化数据,将数据存储在硬盘中,读取速度较慢。
-MySQL 下载 Navicat Link to heading 可视化数据库管理工具
-Navicat 下载 Redis Link to heading 即NOSQL，一个非关系型数据库，缓存数据库，即将数据存储在缓存中，缓存的读取速度快，能够大大的提高运行效率，但是保存时间有限。</description></item><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>j</title><link>https://ramoncjj.github.io/</link><description>Recent content on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 16 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Maven</title><link>https://ramoncjj.github.io/posts/maven/</link><pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/maven/</guid><description>Maven Link to heading 由于 Java 的生态非常丰富，无论你想实现什么功能，都能找到对应的工具类，这些工具类都是以 jar 包的形式出现的，例如 Spring，SpringMVC、MyBatis、数据库驱动，等等，都是以 jar 包的形式出现的，jar 包之间会有关联，在使用一个依赖之前，还需要确定这个依赖所依赖的其他依赖，所以，当项目比较大的时候，依赖管理会变得非常麻烦臃肿，这是 Maven 解决的第一个问题。
+Maven 还可以处理多模块项目。简单的项目，单模块分包处理即可，如果项目比较复杂，要做成多模块项目，例如一个电商项目有订单模块、会员模块、商品模块、支付模块&amp;hellip;，一般来说，多模块项目，每一个模块无法独立运行，要多个模块合在一起，项目才可以运行，这个时候，借助 Maven 工具，可以实现项目的一键打包。
+Maven 之前，我们更多的是使用 Ant 的项目构建工具，Ant 有一个特点，每次都得写，每次都写的差不多，配置也臃肿。所以，后来搞出来 Maven。Maven 就是最先进的版本构建工具吗？不是的，只不过，目前在 Java 领域 Maven 使用比较多。除了 Maven，还有 Gradle。
+所以Maven 是一个项目管理工具，反映在配置中，就是一个 pom.xml 文件。
+Maven仓库 Link to heading 本地仓库
+路径为 user\ .m2\repository，项目使用一些插件或 jar 包优先从本地仓库查找
+第三方仓库
+一般由公司自己设立，只为本公司内部共享使用，它既可以作为公司内部构建协作和存档，也可作为公用类库镜像缓存
+中央仓库
+在 maven 软件中内置一个远程仓库地址 https://mvnrepository.com/ ，它是中央仓库，服务于整个互联网，它是由 Maven 团队自己维护，里面存储了非常全的 jar 包，它含了世界上大部分流行的开源项目构件。</description></item><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
 JDK下载
 配置环境变量
 系统变量中添加
