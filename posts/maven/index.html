@@ -37,8 +37,203 @@ Maven仓库  Link to heading     本地仓库
 <span class=sr-only>Link to heading</span></a></h2><ul><li><p>本地仓库</p><p>路径为 user\ .m2\repository，项目使用一些插件或 jar 包优先从本地仓库查找</p></li><li><p>第三方仓库</p><p>一般由公司自己设立，只为本公司内部共享使用，它既可以作为公司内部构建协作和存档，也可作为公用类库镜像缓存</p></li><li><p>中央仓库</p><p>在 maven 软件中内置一个远程仓库地址 <a href=https://mvnrepository.com/%EF%BC%8C%E5%BD%93%E6%88%91%E4%BB%AC%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%AE%8C%E4%BE%9D%E8%B5%96%E4%B9%8B%E5%90%8E%EF%BC%8CMaven>https://mvnrepository.com/</a> ，它是中央仓库，服务于整个互联网，它是由 Maven 团队自己维护，里面存储了非常全的 jar 包，它含了世界上大部分流行的开源项目构件。</p></li></ul><h2 id=heading><a class=heading-link href=#heading><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><h2 id=获取jar包顺序>获取jar包顺序
 <a class=heading-link href=#%e8%8e%b7%e5%8f%96jar%e5%8c%85%e9%a1%ba%e5%ba%8f><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>见上图</p><h2 id=pomxml>pom.xml
-<a class=heading-link href=#pomxml><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>见上图</p><h2 id=settingxml-详解>setting.xml 详解
+<a class=heading-link href=#settingxml-%e8%af%a6%e8%a7%a3><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>settings.xml 是 maven 的配置文件，用户配置文件存放于 ${user.home}/.m2/ 目录下，系统全局配置文件放置于 ${maven.home}/conf/ 目录下。配置文件的优先级从<code>高到低</code>为：<code>pom.xml</code>、用户配置 <code>settings.xml</code>、全局系统 <code>settings.xml</code>。如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style=color:#f92672>&lt;settings</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>&#34;http://maven.apache.org/SETTINGS/1.0.0&#34;</span>
+          <span style=color:#a6e22e>xmlns:xsi=</span><span style=color:#e6db74>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+          <span style=color:#a6e22e>xsi:schemaLocation=</span><span style=color:#e6db74>&#34;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&#34;</span><span style=color:#f92672>&gt;</span>
+    <span style=color:#75715e>&lt;!-- 构建系统本地仓库的路径。其默认值：~/.m2/repository --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;localRepository&gt;${user.home}/.m2/repository&lt;/localRepository&gt; --&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 是否需要和用户交互以获得输入。默认为 true --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;interactiveMode&gt;true&lt;/interactiveMode&gt; --&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 是否需要使用 ~/.m2/plugin-registry.xml 文件来管理插件版本。默认为 false --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;usePluginRegistry&gt;false&lt;/usePluginRegistry&gt; --&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 是否需要在离线模式下运行，默认为 false。当由于网络设置原因或者安全因素，构建服务器不能连接远程仓库的时候，该配置就十分有用 --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;offline&gt;false&lt;/offline&gt; --&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 当插件的 groupId 没有显式提供时，供搜寻插件 groupId 的列表。使用某个插件，如果没有指定 groupId 的时候，maven 就会使用该列表。
+</span><span style=color:#75715e>        默认情况下该列表包含了 org.apache.maven.plugins 和 org.codehaus.mojo --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;pluginGroups&gt; --&gt;</span>
+        <span style=color:#75715e>&lt;!-- plugin 的 groupId --&gt;</span>
+        <span style=color:#75715e>&lt;!-- &lt;pluginGroup&gt;org.codehaus.mojo&lt;/pluginGroup&gt; --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;/pluginGroups&gt; --&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 配置服务端的一些设置。如安全证书之类的信息应该配置在 settings.xml 文件中，避免配置在 pom.xml 中 --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;servers&gt; --&gt;</span>
+        <span style=color:#75715e>&lt;!-- &lt;server&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 这是 server 的 id（注意不是用户登陆的 id），该 id 与 distributionManagement 中 repository 元素的 id 相匹配 --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;id&gt;server001&lt;/id&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 鉴权用户名 --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;username&gt;my_login&lt;/username&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 鉴权密码 --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;password&gt;my_password&lt;/password&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 鉴权时使用的私钥位置。默认是 ${user.home}/.ssh/id_dsa --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;privateKey&gt;${usr.home}/.ssh/id_dsa&lt;/privateKey&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 鉴权时使用的私钥密码 --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;passphrase&gt;some_passphrase&lt;/passphrase&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 文件被创建时的权限。如果在部署的时候会创建一个仓库文件或者目录，这时候就可以使用该权限。其对应了 unix 文件系统的权限，如：664、775 --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;filePermissions&gt;664&lt;/filePermissions&gt; --&gt;</span>
+            <span style=color:#75715e>&lt;!-- 目录被创建时的权限 --&gt;</span>
+            <span style=color:#75715e>&lt;!-- &lt;directoryPermissions&gt;775&lt;/directoryPermissions&gt; --&gt;</span>
+        <span style=color:#75715e>&lt;!-- &lt;/server&gt; --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;/servers&gt; --&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 下载镜像列表 --&gt;</span>
+    <span style=color:#f92672>&lt;mirrors&gt;</span>
+        <span style=color:#75715e>&lt;!-- 设置多个镜像只会识别第一个镜像下载 jar 包--&gt;</span>
+        <span style=color:#f92672>&lt;mirror&gt;</span>
+            <span style=color:#75715e>&lt;!-- 该镜像的唯一标识符。id 用来区分不同的 mirror 元素 --&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>aliyunmaven<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#75715e>&lt;!-- 被镜像的服务器的 id。如果我们要设置了一个 maven 中央仓库（http://repo.maven.apache.org/maven2/）的镜像，就需要将该元素设置成 central。
+</span><span style=color:#75715e>                可以使用 * 表示任意远程库。例如：external:* 表示任何不在 localhost 和文件系统中的远程库，r1,r2 表示 r1 库或者 r2 库，*,!r1 表示除了 r1 库之外的任何远程库 --&gt;</span>
+            <span style=color:#f92672>&lt;mirrorOf&gt;</span>*<span style=color:#f92672>&lt;/mirrorOf&gt;</span>
+            <span style=color:#75715e>&lt;!-- 镜像名称 --&gt;</span>
+            <span style=color:#f92672>&lt;name&gt;</span>阿里云公共仓库<span style=color:#f92672>&lt;/name&gt;</span>
+            <span style=color:#75715e>&lt;!-- 镜像的 URL --&gt;</span>
+            <span style=color:#f92672>&lt;url&gt;</span>https://maven.aliyun.com/repository/public<span style=color:#f92672>&lt;/url&gt;</span>
+        <span style=color:#f92672>&lt;/mirror&gt;</span>
+    <span style=color:#f92672>&lt;/mirrors&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 用来配置不同的代理 --&gt;</span>
+    <span style=color:#f92672>&lt;proxies&gt;</span>
+        <span style=color:#f92672>&lt;proxy&gt;</span>
+            <span style=color:#75715e>&lt;!-- 代理的唯一定义符，用来区分不同的代理元素 --&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>myproxy<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#75715e>&lt;!-- 是否激活。当我们声明了一组代理，而某个时候只需要激活一个代理的时候 --&gt;</span>
+            <span style=color:#f92672>&lt;active&gt;</span>false<span style=color:#f92672>&lt;/active&gt;</span>
+            <span style=color:#75715e>&lt;!-- 代理的协议 --&gt;</span>
+            <span style=color:#f92672>&lt;protocol&gt;</span>http<span style=color:#f92672>&lt;/protocol&gt;</span>
+            <span style=color:#75715e>&lt;!-- 代理的主机名 --&gt;</span>
+            <span style=color:#f92672>&lt;host&gt;</span>proxy.somewhere.com<span style=color:#f92672>&lt;/host&gt;</span>
+            <span style=color:#75715e>&lt;!-- 代理的端口 --&gt;</span>
+            <span style=color:#f92672>&lt;port&gt;</span>8080<span style=color:#f92672>&lt;/port&gt;</span>
+            <span style=color:#75715e>&lt;!-- 代理的用户名，用户名和密码表示代理服务器认证的登录名和密码 --&gt;</span>
+            <span style=color:#f92672>&lt;username&gt;</span>proxyuser<span style=color:#f92672>&lt;/username&gt;</span>
+            <span style=color:#75715e>&lt;!-- 代理的密码 --&gt;</span>
+            <span style=color:#f92672>&lt;password&gt;</span>somepassword<span style=color:#f92672>&lt;/password&gt;</span>
+            <span style=color:#75715e>&lt;!-- 不该被代理的主机名列表。该列表的分隔符由代理服务器指定；例子中使用了竖线分隔符，逗号分隔也很常见 --&gt;</span>
+            <span style=color:#f92672>&lt;nonProxyHosts&gt;</span>*.google.com|ibiblio.org<span style=color:#f92672>&lt;/nonProxyHosts&gt;</span>
+        <span style=color:#f92672>&lt;/proxy&gt;</span>
+    <span style=color:#f92672>&lt;/proxies&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 根据环境参数来调整构建配置的列表。对应 pom.xml 中 profile 元素（只包含 id、activation、repositories、pluginRepositories 和 properties 元素）
+</span><span style=color:#75715e>        如果一个 settings.xml 中的 profile 被激活，它的值会覆盖任何定义在 pom.xml 中带有相同 id 的 profile --&gt;</span>
+    <span style=color:#f92672>&lt;profiles&gt;</span>
+        <span style=color:#f92672>&lt;profile&gt;</span>
+            <span style=color:#75715e>&lt;!-- profile 的唯一标识 --&gt;</span>
+            <span style=color:#f92672>&lt;id&gt;</span>test<span style=color:#f92672>&lt;/id&gt;</span>
+            <span style=color:#75715e>&lt;!-- 自动触发 profile 的条件逻辑。也可通过 activeProfile 元素以及使用 -P 标记激活（如：mvn clean install -P test）
+</span><span style=color:#75715e>                在 maven 工程的 pom.xml 所在目录下执行 mvn help:active-profiles 命令可以查看生效的 profile --&gt;</span>
+            <span style=color:#f92672>&lt;activation&gt;</span>
+                <span style=color:#75715e>&lt;!-- 默认是否激活 --&gt;</span>
+                <span style=color:#f92672>&lt;activeByDefault&gt;</span>false<span style=color:#f92672>&lt;/activeByDefault&gt;</span>
+                <span style=color:#75715e>&lt;!-- 当匹配的 jdk 被检测到，profile 被激活。例如：1.4 激活 JDK1.4、1.4.0_2，而 !1.4 激活所有版本不是以 1.4 开头的 JDK --&gt;</span>
+                <span style=color:#f92672>&lt;jdk&gt;</span>1.8<span style=color:#f92672>&lt;/jdk&gt;</span>
+                <span style=color:#75715e>&lt;!-- 当匹配的操作系统属性被检测到，profile 被激活。os 元素可以定义一些操作系统相关的属性 --&gt;</span>
+                <span style=color:#f92672>&lt;os&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 激活 profile的 操作系统的名字 --&gt;</span>
+                    <span style=color:#f92672>&lt;name&gt;</span>Windows XP<span style=color:#f92672>&lt;/name&gt;</span>
+                    <span style=color:#75715e>&lt;!--激活 profile 的操作系统所属家族。如：windows --&gt;</span>
+                    <span style=color:#f92672>&lt;family&gt;</span>Windows<span style=color:#f92672>&lt;/family&gt;</span>
+                    <span style=color:#75715e>&lt;!--激活 profile 的操作系统体系结构 --&gt;</span>
+                    <span style=color:#f92672>&lt;arch&gt;</span>x86<span style=color:#f92672>&lt;/arch&gt;</span>
+                    <span style=color:#75715e>&lt;!--激活p rofile 的操作系统版本 --&gt;</span>
+                    <span style=color:#f92672>&lt;version&gt;</span>5.1.2600<span style=color:#f92672>&lt;/version&gt;</span>
+                <span style=color:#f92672>&lt;/os&gt;</span>
+                <span style=color:#75715e>&lt;!-- 如果 maven 检测到某一个属性（其值可以在 pom.xml 中通过 ${name} 引用），其拥有对应的 name=值，Profile 就会被激活。如果值字段是空的，
+</span><span style=color:#75715e>                    那么存在属性名称字段就会激活 profile，否则按区分大小写方式匹配属性值字段 --&gt;</span>
+                <span style=color:#f92672>&lt;property&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 激活 profile 的属性的名称 --&gt;</span>
+                    <span style=color:#f92672>&lt;name&gt;</span>mavenVersion<span style=color:#f92672>&lt;/name&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 激活 profile 的属性的值 --&gt;</span>
+                    <span style=color:#f92672>&lt;value&gt;</span>2.0.3<span style=color:#f92672>&lt;/value&gt;</span>
+                <span style=color:#f92672>&lt;/property&gt;</span>
+                <span style=color:#75715e>&lt;!-- 通过检测该文件的存在或不存在来激活 profile--&gt;</span>
+                <span style=color:#f92672>&lt;file&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 如果指定的文件存在，则激活 profile --&gt;</span>
+                    <span style=color:#f92672>&lt;exists&gt;</span>${basedir}/file2.properties<span style=color:#f92672>&lt;/exists&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 如果指定的文件不存在，则激活 profile --&gt;</span>
+                    <span style=color:#f92672>&lt;missing&gt;</span>${basedir}/file1.properties<span style=color:#f92672>&lt;/missing&gt;</span>
+                <span style=color:#f92672>&lt;/file&gt;</span>
+            <span style=color:#f92672>&lt;/activation&gt;</span>
+            <span style=color:#75715e>&lt;!-- 对应 profile 的扩展属性列表。maven 属性和 ant 中的属性一样，可以用来存放一些值。这些值可以在 pom.xml 中的任何地方使用标记 ${X} 来使用，这里 X 是指属性的名称。
+</span><span style=color:#75715e>                属性有五种不同的形式，并且都能在 settings.xml 文件中访问：
+</span><span style=color:#75715e>                1. env.X：在一个变量前加上 &#34;env.&#34; 的前缀，会返回一个 shell 环境变量。例如：&#34;env.PATH&#34; 指代了 $path 环境变量（在 Windows 上是 %PATH%）
+</span><span style=color:#75715e>                2. project.x：指代了 pom.xml 中对应的元素值。例如：&lt;project&gt;&lt;version&gt;1.0&lt;/version&gt;&lt;/project&gt; 通过 ${project.version} 获得 version 的值
+</span><span style=color:#75715e>                3. settings.x：指代了 settings.xml 中对应元素的值。例如：&lt;settings&gt;&lt;offline&gt;false&lt;/offline&gt;&lt;/settings&gt; 通过 ${settings.offline} 获得 offline 的值
+</span><span style=color:#75715e>                4. Java System Properties：所有可通过 java.lang.System.getProperties() 访问的属性都能在 pom.xml 中使用该形式访问，例如：${java.home}
+</span><span style=color:#75715e>                5. x：在 &lt;properties/&gt; 元素中，或者外部文件中设置，以 ${someVar} 的形式使用
+</span><span style=color:#75715e>            --&gt;</span>
+            <span style=color:#f92672>&lt;properties&gt;</span>
+                <span style=color:#75715e>&lt;!-- 如果该 profile 被激活，则可以在 pom.xml 中使用 ${user.install} --&gt;</span>
+                <span style=color:#f92672>&lt;user.install&gt;</span>${user.home}/our-project<span style=color:#f92672>&lt;/user.install&gt;</span>
+            <span style=color:#f92672>&lt;/properties&gt;</span>
+            <span style=color:#75715e>&lt;!-- 远程仓库列表。它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库 --&gt;</span>
+            <span style=color:#f92672>&lt;repositories&gt;</span>
+                <span style=color:#75715e>&lt;!--包含需要连接到远程仓库的信息 --&gt;</span>
+                <span style=color:#f92672>&lt;repository&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 远程仓库唯一标识 --&gt;</span>
+                    <span style=color:#f92672>&lt;id&gt;</span>codehausSnapshots<span style=color:#f92672>&lt;/id&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 远程仓库名称 --&gt;</span>
+                    <span style=color:#f92672>&lt;name&gt;</span>Codehaus Snapshots<span style=color:#f92672>&lt;/name&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 如何处理远程仓库里 releases 的下载 --&gt;</span>
+                    <span style=color:#f92672>&lt;releases&gt;</span>
+                        <span style=color:#75715e>&lt;!-- 是否开启 --&gt;</span>
+                        <span style=color:#f92672>&lt;enabled&gt;</span>false<span style=color:#f92672>&lt;/enabled&gt;</span>
+                        <span style=color:#75715e>&lt;!-- 该元素指定更新发生的频率。maven 会比较本地 pom.xml 和远程 pom.xml 的时间戳。
+</span><span style=color:#75715e>                            这里的选项是：always（一直），daily（默认，每日），interval：X（这里 X 是以分钟为单位的时间间隔），或者 never（从不）。 --&gt;</span>
+                        <span style=color:#f92672>&lt;updatePolicy&gt;</span>always<span style=color:#f92672>&lt;/updatePolicy&gt;</span>
+                        <span style=color:#75715e>&lt;!-- 当 maven 验证构件校验文件失败时该怎么做：ignore（忽略），fail（失败），或者 warn（警告）--&gt;</span>
+                        <span style=color:#f92672>&lt;checksumPolicy&gt;</span>warn<span style=color:#f92672>&lt;/checksumPolicy&gt;</span>
+                    <span style=color:#f92672>&lt;/releases&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 如何处理远程仓库里快照版本的下载。有了 releases 和 snapshots 这两组配置，pom.xml 就可以在每个单独的仓库中，为每种类型的构件采取不同的策略。
+</span><span style=color:#75715e>                        例如：可能有人会决定只为开发目的开启对快照版本下载的支持 --&gt;</span>
+                    <span style=color:#f92672>&lt;snapshots&gt;</span>
+                        <span style=color:#f92672>&lt;enabled/&gt;</span>
+                        <span style=color:#f92672>&lt;updatePolicy/&gt;</span>
+                        <span style=color:#f92672>&lt;checksumPolicy/&gt;</span>
+                    <span style=color:#f92672>&lt;/snapshots&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 远程仓库 URL --&gt;</span>
+                    <span style=color:#f92672>&lt;url&gt;</span>http://snapshots.maven.codehaus.org/maven2<span style=color:#f92672>&lt;/url&gt;</span>
+                    <span style=color:#75715e>&lt;!-- 用于定位和排序构件的仓库布局类型。可以是 default（默认）或者 legacy（遗留）--&gt;</span>
+                    <span style=color:#f92672>&lt;layout&gt;</span>default<span style=color:#f92672>&lt;/layout&gt;</span>
+                <span style=color:#f92672>&lt;/repository&gt;</span>
+            <span style=color:#f92672>&lt;/repositories&gt;</span>
+            <span style=color:#75715e>&lt;!-- 插件的远程仓库列表。和 repositories 类似，repositories 管理 jar 包依赖的仓库，pluginRepositories 则是管理插件的仓库 --&gt;</span>
+            <span style=color:#f92672>&lt;pluginRepositories&gt;</span>
+                <span style=color:#75715e>&lt;!-- 每个 pluginRepository 元素指定一个 maven 可以用来寻找新插件的远程地址 --&gt;</span>
+                <span style=color:#f92672>&lt;pluginRepository&gt;</span>
+                    <span style=color:#f92672>&lt;id/&gt;</span>
+                    <span style=color:#f92672>&lt;name/&gt;</span>
+                    <span style=color:#f92672>&lt;releases&gt;</span>
+                        <span style=color:#f92672>&lt;enabled/&gt;</span>
+                        <span style=color:#f92672>&lt;updatePolicy/&gt;</span>
+                        <span style=color:#f92672>&lt;checksumPolicy/&gt;</span>
+                    <span style=color:#f92672>&lt;/releases&gt;</span>
+                    <span style=color:#f92672>&lt;snapshots&gt;</span>
+                        <span style=color:#f92672>&lt;enabled/&gt;</span>
+                        <span style=color:#f92672>&lt;updatePolicy/&gt;</span>
+                        <span style=color:#f92672>&lt;checksumPolicy/&gt;</span>
+                    <span style=color:#f92672>&lt;/snapshots&gt;</span>
+                    <span style=color:#f92672>&lt;url/&gt;</span>
+                    <span style=color:#f92672>&lt;layout/&gt;</span>
+                <span style=color:#f92672>&lt;/pluginRepository&gt;</span>
+            <span style=color:#f92672>&lt;/pluginRepositories&gt;</span>
+        <span style=color:#f92672>&lt;/profile&gt;</span>
+    <span style=color:#f92672>&lt;/profiles&gt;</span>
+
+    <span style=color:#75715e>&lt;!-- 手动激活 profiles 的列表 --&gt;</span>
+    <span style=color:#75715e>&lt;!-- &lt;activeProfiles&gt; --&gt;</span>
+        <span style=color:#75715e>&lt;!-- 要激活的 profile id。例如：env-test，则在 pom.xml 或 settings.xml 中对应 id 的 profile 会被激活。如果运行过程中找不到对应的 profile 则忽略配置 --&gt;</span>
+        <span style=color:#75715e>&lt;!-- &lt;activeProfile&gt;env-test&lt;/activeProfile&gt; --&gt;</span>
+  <span style=color:#75715e>&lt;!-- &lt;/activeProfiles&gt; --&gt;</span>
+<span style=color:#f92672>&lt;/settings&gt;</span>
+</code></pre></div><h2 id=pomxml-详解>pom.xml 详解
+<a class=heading-link href=#pomxml-%e8%af%a6%e8%a7%a3><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;project</span> <span style=color:#a6e22e>xmlns=</span><span style=color:#e6db74>&#34;http://maven.apache.org/POM/4.0.0&#34;</span> 
 <span style=color:#a6e22e>xmlns:xsi=</span><span style=color:#e6db74>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span> 
 <span style=color:#a6e22e>xsi:schemaLocation=</span><span style=color:#e6db74>&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd &#34;</span><span style=color:#f92672>&gt;</span> 
