@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>服务器 on j</title><link>https://ramoncjj.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><description>Recent content in 服务器 on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 10 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>服务器 on j</title><link>https://ramoncjj.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><description>Recent content in 服务器 on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 10 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/maven/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/maven/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
+JDK下载
+配置环境变量
+系统变量中添加
+Variable Name : JAVA_HOME Variable Value : C:\Program Files\Java\jdk1.8.0_31
+Variable Name : PATH Variable Value : %JAVA_HOME%\bin
+查看配置是否成功
+java -version MySql Link to heading 一个关系型数据库，主要用于存放持久化数据,将数据存储在硬盘中,读取速度较慢。
+MySQL 下载 Navicat Link to heading 可视化数据库管理工具
+Navicat 下载 Redis Link to heading 即NOSQL，一个非关系型数据库，缓存数据库，即将数据存储在缓存中，缓存的读取速度快，能够大大的提高运行效率，但是保存时间有限。</description></item><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
 JDK下载
 配置环境变量
 系统变量中添加
