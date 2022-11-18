@@ -19,7 +19,7 @@ Maven仓库 Link to heading 本地仓库
 第三方仓库
 一般由公司自己设立，只为本公司内部共享使用，它既可以作为公司内部构建协作和存档，也可作为公用类库镜像缓存
 中央仓库
-在 maven 软件中内置一个远程仓库地址 https://mvnrepository.com/ ，它是中央仓库，服务于整个互联网，它是由 Maven 团队自己维护，里面存储了非常全的 jar 包，它含了世界上大部分流行的开源项目构件。</description></item><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
+在 maven 软件中内置一个远程仓库地址 Maven Repository: Central，它是中央仓库，服务于整个互联网，它是由 Maven 团队自己维护，里面存储了非常全的 jar 包，它含了世界上大部分流行的开源项目构件。</description></item><item><title>ruoyi-vue部署环境搭建</title><link>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/ruoyi-vue%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>JDK Link to heading Java SE Development kit(JDK)，即java标准版开发包，是Oracle提供的一套用于开发java应用程序的开发包，它提供编译，运行java程序所需要的各种工具和资源，包括java编译器，java运行时环境，以及常用的java类库等。
 JDK下载
 配置环境变量
 系统变量中添加
