@@ -1,19 +1,165 @@
-<!doctype html><html lang=zh><head><title>spring中的aop · j</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=description content="什么是AOP  Link to heading   AOP是一种编程思想，基于面向对象编程（OOP）的一种补充。
-AOP能干什么  Link to heading   想象下面的场景，开发中在多个模块间有某段重复的代码，我们通常是怎么处理的？显然，没有人会靠“复制粘贴”吧。在传统的面向过程编程中，我们也会将这段代码，抽象成一个方法，然后在需要的地方分别调用这个方法，这样当这段代码需要修改时，我们只需要改变这个方法就可以了。然而需求总是变化的，有一天，新增了一个需求，需要再多出做修改，我们需要再抽象出一个方法，然后再在需要的地方分别调用这个方法，又或者我们不需要这个方法了，我们还是得删除掉每一处调用该方法的地方。实际上涉及到多个地方具有相同的修改的问题我们都可以通过 AOP 来解决。
-https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="spring中的aop"><meta name=twitter:description content="什么是AOP  Link to heading   AOP是一种编程思想，基于面向对象编程（OOP）的一种补充。
-AOP能干什么  Link to heading   想象下面的场景，开发中在多个模块间有某段重复的代码，我们通常是怎么处理的？显然，没有人会靠“复制粘贴”吧。在传统的面向过程编程中，我们也会将这段代码，抽象成一个方法，然后在需要的地方分别调用这个方法，这样当这段代码需要修改时，我们只需要改变这个方法就可以了。然而需求总是变化的，有一天，新增了一个需求，需要再多出做修改，我们需要再抽象出一个方法，然后再在需要的地方分别调用这个方法，又或者我们不需要这个方法了，我们还是得删除掉每一处调用该方法的地方。实际上涉及到多个地方具有相同的修改的问题我们都可以通过 AOP 来解决。
-https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8"><meta property="og:title" content="spring中的aop"><meta property="og:description" content="什么是AOP  Link to heading   AOP是一种编程思想，基于面向对象编程（OOP）的一种补充。
-AOP能干什么  Link to heading   想象下面的场景，开发中在多个模块间有某段重复的代码，我们通常是怎么处理的？显然，没有人会靠“复制粘贴”吧。在传统的面向过程编程中，我们也会将这段代码，抽象成一个方法，然后在需要的地方分别调用这个方法，这样当这段代码需要修改时，我们只需要改变这个方法就可以了。然而需求总是变化的，有一天，新增了一个需求，需要再多出做修改，我们需要再抽象出一个方法，然后再在需要的地方分别调用这个方法，又或者我们不需要这个方法了，我们还是得删除掉每一处调用该方法的地方。实际上涉及到多个地方具有相同的修改的问题我们都可以通过 AOP 来解决。
-https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8"><meta property="og:type" content="article"><meta property="og:url" content="https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-11-18T00:00:00+00:00"><meta property="article:modified_time" content="2022-11-18T00:00:00+00:00"><link rel=canonical href=https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css integrity="sha256-OeQafxa9+MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5><meta name=generator content="Hugo 0.85.0"></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>j</a>
+<!doctype html><html lang=zh><head><title>spring中的aop · j</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=description content="什么是AOP  Link to heading   AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。至于AOP的实现原理，本文暂时不讲，有兴趣的可以去了解下jdk的动态代理，AOP就是基于此实现的。
+https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8
+AOP应用场景  Link to heading   权限控制、缓存控制、事务控制、分布式追踪、异常处理等
+举个例子  Link to heading   如果你要在Service层的某些特定方法需加上权限验证，使用OOP思想的话只能在方法内部添加验证身份的代码，例如
+public void insert() { checkUserAdmin.check(); // 加入权限验证方法  repository.insert(); // 调用dao层插入数据库一条记录 } 这样看起来功能是实现了，但如果service层有很多insert和delete方法呢？这样插入代码的方式不易于我们去统一管理，且修改了原代码，具有侵入性。
+那么使用了AOP之后呢？你可以建一个切面类，对要进行权限验证的方法进行切入。
+即在程序运行时，动态地将代码切入到类的指定方法或位置上的思想，就是面向切面编程。
+AOP专业术语  Link to heading     target：目标类，即需要被代理的类
+  joinpoint：连接点，可能被拦截到的地方
+  pointcut：切入点，已经被增强的地方
+  advice：通知\增强，增强代码
+  weaving：是指把增强advice应用到目标对象target来创建新的代理对象proxy的过程
+  proxy：代理类
+  aspect：是切入点pointcut和通知advice的结合"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="spring中的aop"><meta name=twitter:description content="什么是AOP  Link to heading   AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。至于AOP的实现原理，本文暂时不讲，有兴趣的可以去了解下jdk的动态代理，AOP就是基于此实现的。
+https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8
+AOP应用场景  Link to heading   权限控制、缓存控制、事务控制、分布式追踪、异常处理等
+举个例子  Link to heading   如果你要在Service层的某些特定方法需加上权限验证，使用OOP思想的话只能在方法内部添加验证身份的代码，例如
+public void insert() { checkUserAdmin.check(); // 加入权限验证方法  repository.insert(); // 调用dao层插入数据库一条记录 } 这样看起来功能是实现了，但如果service层有很多insert和delete方法呢？这样插入代码的方式不易于我们去统一管理，且修改了原代码，具有侵入性。
+那么使用了AOP之后呢？你可以建一个切面类，对要进行权限验证的方法进行切入。
+即在程序运行时，动态地将代码切入到类的指定方法或位置上的思想，就是面向切面编程。
+AOP专业术语  Link to heading     target：目标类，即需要被代理的类
+  joinpoint：连接点，可能被拦截到的地方
+  pointcut：切入点，已经被增强的地方
+  advice：通知\增强，增强代码
+  weaving：是指把增强advice应用到目标对象target来创建新的代理对象proxy的过程
+  proxy：代理类
+  aspect：是切入点pointcut和通知advice的结合"><meta property="og:title" content="spring中的aop"><meta property="og:description" content="什么是AOP  Link to heading   AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。至于AOP的实现原理，本文暂时不讲，有兴趣的可以去了解下jdk的动态代理，AOP就是基于此实现的。
+https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8
+AOP应用场景  Link to heading   权限控制、缓存控制、事务控制、分布式追踪、异常处理等
+举个例子  Link to heading   如果你要在Service层的某些特定方法需加上权限验证，使用OOP思想的话只能在方法内部添加验证身份的代码，例如
+public void insert() { checkUserAdmin.check(); // 加入权限验证方法  repository.insert(); // 调用dao层插入数据库一条记录 } 这样看起来功能是实现了，但如果service层有很多insert和delete方法呢？这样插入代码的方式不易于我们去统一管理，且修改了原代码，具有侵入性。
+那么使用了AOP之后呢？你可以建一个切面类，对要进行权限验证的方法进行切入。
+即在程序运行时，动态地将代码切入到类的指定方法或位置上的思想，就是面向切面编程。
+AOP专业术语  Link to heading     target：目标类，即需要被代理的类
+  joinpoint：连接点，可能被拦截到的地方
+  pointcut：切入点，已经被增强的地方
+  advice：通知\增强，增强代码
+  weaving：是指把增强advice应用到目标对象target来创建新的代理对象proxy的过程
+  proxy：代理类
+  aspect：是切入点pointcut和通知advice的结合"><meta property="og:type" content="article"><meta property="og:url" content="https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-11-18T00:00:00+00:00"><meta property="article:modified_time" content="2022-11-18T00:00:00+00:00"><link rel=canonical href=https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css integrity="sha256-OeQafxa9+MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5><meta name=generator content="Hugo 0.85.0"></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>j</a>
 <input type=checkbox id=menu-toggle>
 <label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/posts/>文章</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/>spring中的aop</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i>
 <time datetime=2022-11-18T00:00:00Z>2022 November 18</time></span>
 <span class=reading-time><i class="fa fa-clock-o" aria-hidden=true></i></span></div><div class=categories><i class="fa fa-folder" aria-hidden=true></i>
 <a href=/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/>服务器</a></div></div></header><div><img src=/images/aop.png alt="Featured image"><h2 id=什么是aop>什么是AOP
 <a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%98%afaop><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>AOP是一种编程思想，基于面向对象编程（OOP）的一种补充。</p><h2 id=aop能干什么>AOP能干什么
-<a class=heading-link href=#aop%e8%83%bd%e5%b9%b2%e4%bb%80%e4%b9%88><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>想象下面的场景，开发中在多个模块间有某段重复的代码，我们通常是怎么处理的？显然，没有人会靠“复制粘贴”吧。在传统的面向过程编程中，我们也会将这段代码，抽象成一个方法，然后在需要的地方分别调用这个方法，这样当这段代码需要修改时，我们只需要改变这个方法就可以了。然而需求总是变化的，有一天，新增了一个需求，需要再多出做修改，我们需要再抽象出一个方法，然后再在需要的地方分别调用这个方法，又或者我们不需要这个方法了，我们还是得删除掉每一处调用该方法的地方。实际上涉及到多个地方具有相同的修改的问题我们都可以通过 AOP 来解决。</p><p><a href="https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8">https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8</a></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+<span class=sr-only>Link to heading</span></a></h2><p>AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。至于AOP的实现原理，本文暂时不讲，有兴趣的可以去了解下jdk的动态代理，AOP就是基于此实现的。</p><p><a href="https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8">https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&vd_source=e74cb622d0f85ed446d8ae51bafe93b8</a></p><h2 id=aop应用场景>AOP应用场景
+<a class=heading-link href=#aop%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>权限控制、缓存控制、事务控制、分布式追踪、异常处理等</p><h2 id=举个例子>举个例子
+<a class=heading-link href=#%e4%b8%be%e4%b8%aa%e4%be%8b%e5%ad%90><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>如果你要在Service层的某些特定方法需加上权限验证，使用OOP思想的话只能在方法内部添加验证身份的代码，例如</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>insert</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+  checkUserAdmin<span style=color:#f92672>.</span><span style=color:#a6e22e>check</span><span style=color:#f92672>();</span>    <span style=color:#75715e>// 加入权限验证方法
+</span><span style=color:#75715e></span>  repository<span style=color:#f92672>.</span><span style=color:#a6e22e>insert</span><span style=color:#f92672>();</span>       <span style=color:#75715e>// 调用dao层插入数据库一条记录
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
+</code></pre></div><p>这样看起来功能是实现了，但如果service层有很多insert和delete方法呢？这样插入代码的方式不易于我们去统一管理，且修改了原代码，具有侵入性。</p><p>那么使用了AOP之后呢？你可以建一个切面类，对要进行权限验证的方法进行切入。</p><p>即在程序运行时，动态地将代码切入到类的指定方法或位置上的思想，就是面向切面编程。</p><h2 id=aop专业术语>AOP专业术语
+<a class=heading-link href=#aop%e4%b8%93%e4%b8%9a%e6%9c%af%e8%af%ad><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li><p>target：目标类，即需要被代理的类</p></li><li><p>joinpoint：连接点，可能被拦截到的地方</p></li><li><p>pointcut：切入点，已经被增强的地方</p></li><li><p>advice：通知\增强，增强代码</p></li><li><p>weaving：是指把增强advice应用到目标对象target来创建新的代理对象proxy的过程</p></li><li><p>proxy：代理类</p></li><li><p>aspect：是切入点pointcut和通知advice的结合</p></li></ul><h2 id=advice-五种增强方式>Advice-五种增强方式
+<a class=heading-link href=#advice-%e4%ba%94%e7%a7%8d%e5%a2%9e%e5%bc%ba%e6%96%b9%e5%bc%8f><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>例如在执行某个特定方法的时候，我们可以选择不同的增强方式（如前置通知/增强，在方法运行前执行），达到我们织入后的不同效果。</p><ul><li>前置通知：在我们执行目标方法之前运行（@Before）</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#960050;background-color:#1e0010>```</span>java
+<span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;within(com.example.demo.Service.*)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>matchType</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#a6e22e>@Before</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;matchType()&#34;</span><span style=color:#f92672>)</span>    <span style=color:#75715e>// 可在此加入JoinPoint打印切点信息
+</span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>before</span><span style=color:#f92672>(</span>JoinPoint joinPoint<span style=color:#f92672>){</span>
+    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;------【前置通知】------&#34;</span> <span style=color:#f92672>+</span> joinPoint<span style=color:#f92672>);</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><pre><code>
+
+
+- 后置通知：在我们目标方法运行结束之后，不管有没有异常（@After）
+
+```java
+@After(value=&quot;execution(* com.example.aspectJ.demo1.ProductDao.findAll(..))&quot;)
+public void after(){
+    System.out.println(&quot;------【后置通知】------&quot;);
+}
+</code></pre><ul><li>返回通知：在我们的目标方法正常返回值后运行（@AfterReturning）</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@AfterReturning</span><span style=color:#f92672>(</span>value<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;execution(* com.example.aspectJ.demo1.ProductDao.update(..))&#34;</span> <span style=color:#f92672>,</span>returning <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;result&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>afterReturning</span><span style=color:#f92672>(</span>Object result<span style=color:#f92672>){</span>	<span style=color:#75715e>// 通过returning属性，定义方法返回值作为参数
+</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;------【返回通知】------&#34;</span> <span style=color:#f92672>+</span> result<span style=color:#f92672>);</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><ul><li>异常通知：我们的目标方法出现异常后运行（@AfterThrowing）</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>//通过设置throwing属性，可以设置发生异常对象参数
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@AfterThrowing</span><span style=color:#f92672>(</span>value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;execution(* com.example.aspectJ.demo1.ProductDao.findOne(..))&#34;</span><span style=color:#f92672>,</span>throwing <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;e&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>afterThrowing</span><span style=color:#f92672>(</span>Throwable e<span style=color:#f92672>){</span>
+    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;------【异常通知】------&#34;</span> <span style=color:#f92672>+</span> e<span style=color:#f92672>.</span><span style=color:#a6e22e>getMessage</span><span style=color:#f92672>());</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><ul><li>环绕通知：动态代理，需要手动执行joinpoint.procced()(@around)</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Around</span><span style=color:#f92672>(</span>value <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;execution(* com.example.aspectJ.demo1.ProductDao.delete(..))&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> Object <span style=color:#a6e22e>around</span><span style=color:#f92672>(</span>ProceedingJoinPoint joinPoint<span style=color:#f92672>)</span> <span style=color:#66d9ef>throws</span> Throwable <span style=color:#f92672>{</span>
+    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;环绕前通知&#34;</span><span style=color:#f92672>);</span>
+    Object obj <span style=color:#f92672>=</span> joinPoint<span style=color:#f92672>.</span><span style=color:#a6e22e>proceed</span><span style=color:#f92672>();</span>    <span style=color:#75715e>// 执行目标方法
+</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;环绕后通知&#34;</span><span style=color:#f92672>);</span>
+    <span style=color:#66d9ef>return</span> obj<span style=color:#f92672>;</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h2 id=切面表达式>切面表达式
+<a class=heading-link href=#%e5%88%87%e9%9d%a2%e8%a1%a8%e8%be%be%e5%bc%8f><i class="fa fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>见上图。</p><ul><li>格式</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>execution<span style=color:#f92672>(</span>
+    修饰符pattern
+    返回值pattern
+    描述包名
+    <span style=color:#a6e22e>方法名</span><span style=color:#f92672>(</span>参数<span style=color:#f92672>)</span>
+    方法抛出异常pattern
+<span style=color:#f92672>)</span>
+</code></pre></div><ul><li>代码示例</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;execution(public * com.example.controller.*Controller.*(..))&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>match</span><span style=color:#f92672>(){</span>
+    
+<span style=color:#f92672>}</span>
+
+<span style=color:#a6e22e>@Before</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;match()&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>before</span><span style=color:#f92672>(){</span>
+    <span style=color:#75715e>// 前置通知...
+</span><span style=color:#75715e></span><span style=color:#f92672>}</span>
+</code></pre></div><ul><li>within表达式</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 匹配StudentService类里所有方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;within(com.example.service.StudentService)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>matchType</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配com.example包及子包下所有类方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;within(com.example..*)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>matchPackage</span><span style=color:#f92672>(){}</span>
+</code></pre></div><ul><li>对象匹配</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>/*public class serviceImpl implements service*/</span>
+
+<span style=color:#75715e>// 匹配AOP对象的目标对象为指定类型方法，即serviceImpl的aop代理对象方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;this(com.example.serviceImpl)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>thisDemo</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配实现service接口的目标对象（非aop代理后的对象）方法，这里指的就是serviceImpl的方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;target(com.example.service)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>targetDemo</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配所有以Service结尾的bean中方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;bean(*Service)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>beanDemo</span><span style=color:#f92672>(){}</span>
+
+</code></pre></div><ul><li>参数匹配</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 匹配任何以find开头且只有一个Long参数的方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;execution(* *..find*(Long))&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>argsDemo1</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配任何只有一个Long参数的方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;args(Long)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>argsDemo2</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配任何以find开头且第一个参数为Long的方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;execution(* *..find*(Long,..))&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>argsDemo3</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配第一个参数为Long的方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;args(Long,..)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>argsDemo4</span><span style=color:#f92672>(){}</span>
+</code></pre></div><ul><li>注解匹配</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 匹配方法注解有@AdminOnly的方法
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@annotation(com.example.security.AdminOnly)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>annoDemo</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配注解有@Test1的类下所有方法，要求注解的RetentionPolicy级别为CLASS
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@within(com.example.annotation.Test1)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>annoWithinDemo</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配注解有@Test2类下所有方法，要求注解的RetentionPolicy级别为RUNTIME
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@target(com.example.repository.Test2)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>annoTargetDemo</span><span style=color:#f92672>(){}</span>
+
+<span style=color:#75715e>// 匹配传入参数类具有@Test3的注解的方法（例如student实体类有注解@Test3，只要方法传入student类就会被拦截）
+</span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;@args(org.example.repository.Test3)&#34;</span><span style=color:#f92672>)</span>
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>annoArgsDemo</span><span style=color:#f92672>(){}</span>
+</code></pre></div></div><footer></footer></article></section></div><footer class=footer><section class=container>©
 2022
 ·
 <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script src=/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv+VPmMpN2pGn19RfzdpwZGU0="></script></body></html>

@@ -1,6 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>j</title><link>https://ramoncjj.github.io/</link><description>Recent content on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 18 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>spring中的aop</title><link>https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/</link><pubDate>Fri, 18 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/</guid><description>什么是AOP Link to heading AOP是一种编程思想，基于面向对象编程（OOP）的一种补充。
-AOP能干什么 Link to heading 想象下面的场景，开发中在多个模块间有某段重复的代码，我们通常是怎么处理的？显然，没有人会靠“复制粘贴”吧。在传统的面向过程编程中，我们也会将这段代码，抽象成一个方法，然后在需要的地方分别调用这个方法，这样当这段代码需要修改时，我们只需要改变这个方法就可以了。然而需求总是变化的，有一天，新增了一个需求，需要再多出做修改，我们需要再抽象出一个方法，然后再在需要的地方分别调用这个方法，又或者我们不需要这个方法了，我们还是得删除掉每一处调用该方法的地方。实际上涉及到多个地方具有相同的修改的问题我们都可以通过 AOP 来解决。
-https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=e74cb622d0f85ed446d8ae51bafe93b8</description></item><item><title>soa通俗解释</title><link>https://ramoncjj.github.io/posts/soa%E6%98%AF%E4%BB%80%E4%B9%88/</link><pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/soa%E6%98%AF%E4%BB%80%E4%B9%88/</guid><description> Link to heading SOA Link to heading 粗暴理解：把系统按照实际业务，拆分成刚刚好大小的、合适的、独立部署的模块，每个模块之间相互独立。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>j</title><link>https://ramoncjj.github.io/</link><description>Recent content on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 18 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>spring中的aop</title><link>https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/</link><pubDate>Fri, 18 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/spring%E4%B8%AD%E7%9A%84aop/</guid><description>什么是AOP Link to heading AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。至于AOP的实现原理，本文暂时不讲，有兴趣的可以去了解下jdk的动态代理，AOP就是基于此实现的。
+https://www.bilibili.com/video/BV1KT4y1G7hs/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=e74cb622d0f85ed446d8ae51bafe93b8
+AOP应用场景 Link to heading 权限控制、缓存控制、事务控制、分布式追踪、异常处理等
+举个例子 Link to heading 如果你要在Service层的某些特定方法需加上权限验证，使用OOP思想的话只能在方法内部添加验证身份的代码，例如
+public void insert() { checkUserAdmin.check(); // 加入权限验证方法 repository.insert(); // 调用dao层插入数据库一条记录 } 这样看起来功能是实现了，但如果service层有很多insert和delete方法呢？这样插入代码的方式不易于我们去统一管理，且修改了原代码，具有侵入性。
+那么使用了AOP之后呢？你可以建一个切面类，对要进行权限验证的方法进行切入。
+即在程序运行时，动态地将代码切入到类的指定方法或位置上的思想，就是面向切面编程。
+AOP专业术语 Link to heading target：目标类，即需要被代理的类
+joinpoint：连接点，可能被拦截到的地方
+pointcut：切入点，已经被增强的地方
+advice：通知\增强，增强代码
+weaving：是指把增强advice应用到目标对象target来创建新的代理对象proxy的过程
+proxy：代理类
+aspect：是切入点pointcut和通知advice的结合</description></item><item><title>soa通俗解释</title><link>https://ramoncjj.github.io/posts/soa%E6%98%AF%E4%BB%80%E4%B9%88/</link><pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/soa%E6%98%AF%E4%BB%80%E4%B9%88/</guid><description> Link to heading SOA Link to heading 粗暴理解：把系统按照实际业务，拆分成刚刚好大小的、合适的、独立部署的模块，每个模块之间相互独立。
 比如现我有一个数据库，一个JavaWeb（或者PHP等）的网站客户端，一个安卓app客户端，一个IOS客户端。现在我要从这个数据库中获取注册用户列表，如果不用SOA的设计思想，那么就会这样：JavaWeb里面写一个查询方法从数据库里面查数据然后在网页显示，安卓app里面写一个查询方法查询后在app上显示，IOS同样如此。这里就会出现查询方法重叠了，这样的坏处很明显了，三个地方都有相同的业务代码，要改三个地方都要改，而且要改的一模一样。当然问题不止这一个。
 于是乎出现了这样的设计思想:
 比如用Java（或者是其他语言皆可）单独创建一个工程部署在一台服务器上，并且写一个方法（或称函数）执行上述查询操作，然后使其他人可以通过某种途径（可以是http链接，或者是基于socket的RPC调用）访问这个方法得到返回数据，返回的数据类型是通用的json或者xml数据，就是说把这个操作封装到一个工程中去，然后暴露访问的方式，形成“服务”。比如这里就是注册用户服务，而关于注册用户的所有相关增删改查操作这个服务都会提供方法。这样一来，JavaWeb这边可以访问这个服务然后得到数据使用，安卓和IOS这里也可以通过这个服务得到数据。而且最重要的是，要修改关于注册用户的业务方法只要改这个服务就好了，很好的解耦。同理，其他业务比如商品、广告等业务都可以单独形成服务部署在单独服务器上。还有就是一旦哪天突然有一堆人要注册，假设这堆人仅仅只是注册而不做其他事情，其他业务比如商品、广告服务等都不忙，唯独注册这个功能压力很大，而原有的一台部署了注册服务的服务器已经承受不了这么高的并发，这时候就可以单独集群部署这个注册服务，提供多几台服务器提供注册服务，而其他服务还不忙，那就维持原样。当然，还有很多其他好处。
