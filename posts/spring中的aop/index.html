@@ -64,10 +64,7 @@ AOP专业术语  Link to heading     target：目标类，即需要被代理的�
 </span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>before</span><span style=color:#f92672>(</span>JoinPoint joinPoint<span style=color:#f92672>){</span>
     System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;------【前置通知】------&#34;</span> <span style=color:#f92672>+</span> joinPoint<span style=color:#f92672>);</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><pre><code>
-
-
-- 后置通知：在我们目标方法运行结束之后，不管有没有异常（@After）
+</code></pre></div><pre><code>- 后置通知：在我们目标方法运行结束之后，不管有没有异常（@After）
 
 ```java
 @After(value=&quot;execution(* com.example.aspectJ.demo1.ProductDao.findAll(..))&quot;)
@@ -75,7 +72,7 @@ public void after(){
     System.out.println(&quot;------【后置通知】------&quot;);
 }
 </code></pre><ul><li>返回通知：在我们的目标方法正常返回值后运行（@AfterReturning）</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@AfterReturning</span><span style=color:#f92672>(</span>value<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;execution(* com.example.aspectJ.demo1.ProductDao.update(..))&#34;</span> <span style=color:#f92672>,</span>returning <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;result&#34;</span><span style=color:#f92672>)</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>afterReturning</span><span style=color:#f92672>(</span>Object result<span style=color:#f92672>){</span>	<span style=color:#75715e>// 通过returning属性，定义方法返回值作为参数
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>afterReturning</span><span style=color:#f92672>(</span>Object result<span style=color:#f92672>){</span>    <span style=color:#75715e>// 通过returning属性，定义方法返回值作为参数
 </span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;------【返回通知】------&#34;</span> <span style=color:#f92672>+</span> result<span style=color:#f92672>);</span>
 <span style=color:#f92672>}</span>
 </code></pre></div><ul><li>异常通知：我们的目标方法出现异常后运行（@AfterThrowing）</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>//通过设置throwing属性，可以设置发生异常对象参数
@@ -101,7 +98,7 @@ public void after(){
 <span style=color:#f92672>)</span>
 </code></pre></div><ul><li>代码示例</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;execution(public * com.example.controller.*Controller.*(..))&#34;</span><span style=color:#f92672>)</span>
 <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>match</span><span style=color:#f92672>(){</span>
-    
+
 <span style=color:#f92672>}</span>
 
 <span style=color:#a6e22e>@Before</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;match()&#34;</span><span style=color:#f92672>)</span>
@@ -128,7 +125,6 @@ public void after(){
 <span style=color:#75715e>// 匹配所有以Service结尾的bean中方法
 </span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;bean(*Service)&#34;</span><span style=color:#f92672>)</span>
 <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>beanDemo</span><span style=color:#f92672>(){}</span>
-
 </code></pre></div><ul><li>参数匹配</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 匹配任何以find开头且只有一个Long参数的方法
 </span><span style=color:#75715e></span><span style=color:#a6e22e>@Pointcut</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;execution(* *..find*(Long))&#34;</span><span style=color:#f92672>)</span>
 <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>argsDemo1</span><span style=color:#f92672>(){}</span>
