@@ -50,19 +50,7 @@ netstat -l # 只显示监听端口 netstat -lt # 显示监听TCP端口 netstat -
 netstat -s # 显示所有端口的统计信息 netstat -st # 显示所有TCP的统计信息 netstat -su # 显示所有UDP的统计信息 显示 PID 和进程名称
 netstat -p 显示核心路由信息
 netstat -r 查看端口和服务
-netstat -antp | grep ssh</description></item><item><title>server</title><link>https://ramoncjj.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid><description/></item><item><title>前端中的一些简单概念</title><link>https://ramoncjj.github.io/posts/%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid><description>前端 Link to heading HTML
-网页的结构，组件的位置 - 骨骼
-CSS
-网页的美化，组件的style - 服饰
-JavaScript
-网页的交互，组件的交互逻辑 - 逻辑
-JavaScript Link to heading 你们人类不满足网页只是一些文字和图片的展示，希望页面上可以有更多功能。
-比如点击一个按钮，弹一个窗口 或者改变页面上某些内容。 为了实现这种功能，就创造了一门脚本语言，逐步升级演化成了 JavaScript 这门语言。
-JavaScript 框架 Link to heading jQuery
-解决浏览器之间的兼容性问题
-Vue
-通过尽可能简单的API实现响应的数据绑定和组合的视图组件
-AngularJS</description></item><item><title>线程和进程</title><link>https://ramoncjj.github.io/posts/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/</guid><description>电脑构成 Link to heading 运行核心 cup + 寄存器 + RAM
+netstat -antp | grep ssh</description></item><item><title>server</title><link>https://ramoncjj.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8/</link><pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid><description/></item><item><title>线程和进程</title><link>https://ramoncjj.github.io/posts/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B/</guid><description>电脑构成 Link to heading 运行核心 cup + 寄存器 + RAM
 外设 键盘 + 鼠标 + gps &amp;hellip;&amp;hellip;
 基础知识点 Link to heading CPU太快，太快，太快了，寄存器仅仅能够追的上他的脚步，RAM和别的挂在各总线上的设备完全是望其项背。那当多个任务要执行的时候怎么办呢？轮流着来?或者谁优先级高谁来？不管怎么样的策略，一句话就是在CPU看来就是轮流着来。
 执行一段程序代码，实现一个功能，当得到CPU的时候，相关的资源必须也已经就位，就是显卡啊，GPS啊什么的必须就位，然后CPU开始执行。这里除了CPU以外所有的就构成了这个程序的执行环境，也就是我们所定义的程序上下文。
