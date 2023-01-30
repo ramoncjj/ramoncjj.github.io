@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>前端 on j</title><link>https://ramoncjj.github.io/categories/%E5%89%8D%E7%AB%AF/</link><description>Recent content in 前端 on j</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 30 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ramoncjj.github.io/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>什么是url</title><link>https://ramoncjj.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AFurl/</link><pubDate>Mon, 30 Jan 2023 00:00:00 +0000</pubDate><guid>https://ramoncjj.github.io/posts/%E4%BB%80%E4%B9%88%E6%98%AFurl/</guid><description> 协议头：告诉浏览器用什么解析方式解析后面的内容
-服务器地址：网络上的哪台服务器
-端口：该服务器上的哪个服务入口
-文件路径：本次请求资源在服务器中的位置
-查询参数：本次请求需要的参数
-锚：通常也是用来传递参数等信息，但与查询参数的本质区别就是这部分内容不会被传递到服务器端，比如在浏览网页的时候，按个按钮突然帮你定位到页首或页面中的某个位子去了，这就是锚</description></item></channel></rss>
